@@ -16,10 +16,6 @@ public class SendService {
     @Autowired
     private Source source;
 
-    public void sendMessage(String msg){
-        source.output().send(MessageBuilder.withPayload(msg).build());
-    }
-
     public String sendMessage(Log log){
         boolean send = source.output().send(MessageBuilder.withPayload(log).build());
         return send ? "SEND OK!":"SEND FAIL";
