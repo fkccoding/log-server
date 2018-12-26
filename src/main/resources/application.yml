@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: log-server
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: 192.100.1.112:9092
+          zk-nodes: 192.100.1.112:2181
+          min-partition-count: 1  #使用主题的全局分区最小数量
+          auto-create-topics: true  #默认为true，绑定器会自动创建新主题
+          auto-add-partitions: true #默认为false，绑定器将在需要的时候自动创建新的分区
+      bindings:
+        output:
+          destination:  MyTopic-01
+  #          content-type: application/json
+
+
+server:
+  port: 9000
+eureka:
+  instance:
+    hostname: 192.100.1.231
+  client:
+    service-url:
+      defaultZone: http://192.100.1.111:8761/eureka/
