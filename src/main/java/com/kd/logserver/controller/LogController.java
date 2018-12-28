@@ -23,6 +23,7 @@ public class LogController {
         System.out.println("log: "+log);
 
         //发送到消息队列中，然后返回状态消息。
-        return sendService.sendMessage(log);
+        boolean send = sendService.sendMessage(log);
+        return send?"发送成功！":"发送失败";
     }
 }
