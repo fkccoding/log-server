@@ -20,7 +20,7 @@ public class LogController {
     //TODO 这是log服务提供方需要写的代码
     @PostMapping("/log_save")
     public String logSave(@RequestBody Log log){
-        System.out.println("log: "+log);
+//        System.out.println("log: "+log);
 
         //发送到消息队列中，然后返回状态消息。
         boolean send = sendService.sendMessage(log);

@@ -1,6 +1,8 @@
 package com.kd.logserver.service;
 
 import com.kd.logserver.domain.Log;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
@@ -16,6 +18,8 @@ import org.springframework.messaging.support.MessageBuilder;
 @EnableBinding(Processor.class)
 public class SendService {
 
+    private Logger logger = LoggerFactory.getLogger(SendService.class);
+
     @Autowired
     private Source source;
 
@@ -25,7 +29,7 @@ public class SendService {
 
     @StreamListener(Processor.INPUT)
     public void receive(boolean feedback) {
-        System.out.println(feedback?"收到反馈！存储"+"成功":"失败");
+        logger.info("收到反馈！存储"+(feedback?"成功":"失败"));
     }
 
 }

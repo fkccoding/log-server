@@ -10,7 +10,7 @@ import java.util.Date;
  */
 @Data
 public class Log {
-    private Integer logId;
+    private Long id;
     private String level;
     private String type;
     private String msg;

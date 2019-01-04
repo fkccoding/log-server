@@ -12,18 +12,23 @@ spring:
           auto-add-partitions: true #默认为false，绑定器将在需要的时候自动创建新的分区
       bindings:
         output:
-          destination: Log
+          destination: input
+#          content-type: application/json
         input:
           destination: output
-  #          content-type: application/json
 
 
 server:
   port: 9000
 eureka:
   instance:
-#    hostname: 192.100.1.231
-    hostname: 192.100.1.111
+    hostname: 192.100.1.231
+#    hostname: 192.100.1.111
   client:
     service-url:
       defaultZone: http://192.100.1.111:8761/eureka/
+
+  #把关闭应用的端点打开
+endpoints:
+  shutdown:
+    enabled: true
